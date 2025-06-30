@@ -1,13 +1,18 @@
+// Updated LoginForm.js
 import React, { useState } from 'react';
 import API from '../api';
 import './ModalForm.css';
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ close }) => {
+const LoginForm = ({ close, switchToSignup }) => {
   const [form, setForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError('');
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -16,7 +21,7 @@ const LoginForm = ({ close }) => {
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
     } catch (err) {
-      alert(err.response?.data?.msg || 'Login failed');
+      setError(err.response?.data?.msg || 'Login failed');
     }
   };
 
@@ -31,11 +36,15 @@ const LoginForm = ({ close }) => {
           <div className="form-group mb-3">
             <input name="email" type="email" className="form-control" placeholder="Email" onChange={handleChange} required />
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-2">
             <input name="password" type="password" className="form-control" placeholder="Password" onChange={handleChange} required />
           </div>
+          {error && <div className="text-danger small mb-3">{error}</div>}
           <button type="submit" className="btn btn-primary w-100">Login</button>
         </form>
+        <div className="text-center mt-3">
+          <span className="small">Don't have an account? <button onClick={switchToSignup} className="btn btn-link p-0">Sign Up</button></span>
+        </div>
       </div>
     </div>
   );
