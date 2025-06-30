@@ -1,0 +1,50 @@
+body {
+  background: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.landing-container {
+  min-height: 100vh;
+  background: url('https://plus.unsplash.com/premium_photo-1719930117940-3cfe57d50208?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZpbGUlMjBzaGFyaW5nfGVufDB8fDB8fHww') no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+
+.hero h1, .hero p {
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.features h2, .how-it-works h2 {
+  font-weight: bold;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dashboard-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.table td {
+  vertical-align: middle;
+}
